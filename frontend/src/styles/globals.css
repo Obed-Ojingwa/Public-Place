@@ -92,9 +92,15 @@
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
   }
+  /*
   * {
-    @apply border-border outline-ring/50;
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring));
+    outline-width: 1px;
+    outline-style: solid;
+    outline-offset: 2px;
   }
+  */
 }
 
 @layer components {
