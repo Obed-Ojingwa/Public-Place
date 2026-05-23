@@ -156,6 +156,7 @@ export default function CheckoutPage() {
       setLoading(false);
     }
   };
+  
  
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
