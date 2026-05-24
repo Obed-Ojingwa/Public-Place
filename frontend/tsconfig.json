@@ -19,7 +19,10 @@
     "declarationMap": true,
     "sourceMap": true,
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "types": [
+      "next",
+      "next/image-types/global",
       "jest",
       "@testing-library/jest-dom"
     ],
@@ -40,6 +43,7 @@
     ]
   },
   "include": [
+    "next-env.d.ts",
     "src",
     ".next/types/**/*.ts"
   ],

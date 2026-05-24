@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
-import '@/styles/globals.css';
+import '../styles/globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from 'sonner';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -58,10 +59,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(GeistSans.variable, GeistMono.variable, "font-sans", inter.variable)}>
       <body className={`${GeistSans.className} min-h-screen flex flex-col bg-slate-950 text-slate-100`}>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Toaster richColors position="top-right" />
+        <ClerkProvider
+          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+          frontendApi={process.env.NEXT_PUBLIC_CLERK_FRONTEND_API}
+        >
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster richColors position="top-right" />
+        </ClerkProvider>
       </body>
     </html>
   );
