@@ -1,6 +1,5 @@
 {
   "trailingSlash": true,
-  "outputDirectory": ".next",
   "headers": [
     {
       "source": "/(.*)",
