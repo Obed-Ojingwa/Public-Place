@@ -56,12 +56,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string;
+  const clerkFrontendApi = process.env.NEXT_PUBLIC_CLERK_FRONTEND_API as string;
+
   return (
     <html lang="en" className={cn(GeistSans.variable, GeistMono.variable, "font-sans", inter.variable)}>
       <body className={`${GeistSans.className} min-h-screen flex flex-col bg-slate-950 text-slate-100`}>
         <ClerkProvider
-          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-          frontendApi={process.env.NEXT_PUBLIC_CLERK_FRONTEND_API}
+          publishableKey={clerkPublishableKey}
         >
           <Header />
           <main className="flex-1">{children}</main>
