@@ -68,12 +68,6 @@ const nextConfig = {
   // SWC minification
   swcMinify: true,
 
-  // Internationalization (optional)
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
-
   // Transpile framer-motion
   transpilePackages: ['framer-motion'],
 };
