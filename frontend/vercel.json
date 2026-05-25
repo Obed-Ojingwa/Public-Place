@@ -1,5 +1,4 @@
 {
-  "trailingSlash": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -11,13 +10,6 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
-    }
-  ],
-  "cleanUrls": true,
   "images": {
     "sizes": [16, 32, 48, 64, 96, 128, 256, 384],
     "domains": [
