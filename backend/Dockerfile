@@ -1,5 +1,8 @@
 FROM python:3.11-slim
 
+# Create app user
+RUN adduser --disabled-password --gecos '' appuser
+
 WORKDIR /app
 
 # Install system dependencies
@@ -9,15 +12,21 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
-COPY backend/requirements.txt .
+COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application
-COPY backend/app ./app
-COPY backend/alembic.ini ./alembic.ini
-COPY backend/alembic ./alembic
+COPY app ./app
+COPY alembic.ini ./alembic.ini
+COPY alembic ./alembic
+
+# Change ownership to appuser
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
 
 # Expose port
 EXPOSE 8000

@@ -83,6 +83,18 @@ interface OpayTransactionResponse {
     paymentLink?: string;
   };
 }
+
+interface ReceiptData {
+  receipt?: {
+    reference: string;
+    email: string;
+    amount: number;
+    plan_name: string;
+    status: string;
+    issued_at: string;
+    html: string;
+  };
+}
  
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
@@ -90,10 +102,13 @@ export default function CheckoutPage() {
   const planId = searchParams.get('plan') || 'growth-seo';
   const plan = pricingPlans.find((p) => p.id === planId) || pricingPlans[1];
   const [loading, setLoading] = useState(false);
+  const [verifying, setVerifying] = useState(false);
   const [email, setEmail] = useState('');
   const [paymentInitiated, setPaymentInitiated] = useState(false);
   const [transactionRef, setTransactionRef] = useState('');
   const [opayAccountCopied, setOpayAccountCopied] = useState(false);
+  const [receiptData, setReceiptData] = useState<ReceiptData | null>(null);
+  const [paymentStatus, setPaymentStatus] = useState<string>('pending');
  
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -148,6 +163,232 @@ export default function CheckoutPage() {
       if (paymentLink) {
         setTimeout(() => {
           window.location.href = paymentLink;
+        }, 2000);
+      }
+    } catch (error) {
+      console.error('Transaction Error:', error);
+      toast.error(
+        error instanceof Error ? error.message : 'Failed to create transaction'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Verify Payment and Get Receipt
+  const verifyPayment = async () => {
+    if (!transactionRef) return;
+    
+    setVerifying(true);
+    try {
+      const response = await fetch('/api/verify-opay-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reference: transactionRef }),
+      });
+
+      const data = await response.json();
+      
+      if (data.status === 200 && data.data?.receipt) {
+        setReceiptData(data.data);
+        setPaymentStatus('completed');
+        toast.success('Payment verified! Receipt generated.');
+      } else {
+        setPaymentStatus('pending');
+        toast.info('Payment still pending. Please try again in a moment.');
+      }
+    } catch (error) {
+      console.error('Verification Error:', error);
+      toast.error('Failed to verify payment. Please try again.');
+    } finally {
+      setVerifying(false);
+    }
+  };
+
+  // Download Receipt as HTML
+  const downloadReceipt = () => {
+    if (!receiptData?.receipt?.html) return;
+    
+    const element = document.createElement('a');
+    element.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(receiptData.receipt.html);
+    element.download = `Receipt-${transactionRef}.html`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    toast.success('Receipt downloaded!');
+  };
+ 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setOpayAccountCopied(true);
+    toast.success('Account number copied!');
+    setTimeout(() => setOpayAccountCopied(false), 2000);
+  };
+ 
+  return (
+    <main className="min-h-screen bg-slate-50 pt-20 pb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-4xl mx-auto"
+        >
+          {/* HEADER */}
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-slate-900 mb-2">Complete Your Purchase</h1>
+            <p className="text-xl text-slate-600">Secure payment via Opay for {plan.name}</p>
+          </motion.div>
+ 
+          {/* CONTENT */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* PAYMENT FORM */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-white rounded-xl border border-slate-200 p-8 h-fit"
+            >
+              {!paymentInitiated ? (
+                <form onSubmit={createOpayTransaction} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-900 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+ 
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <p className="text-sm text-blue-900">
+                      <strong>ℹ️ Payment Method:</strong> You'll be able to pay via Opay after creating the transaction.
+                    </p>
+                  </div>
+ 
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    <DollarSign className="w-4 h-4" />
+                    {loading ? 'Creating Transaction...' : 'Create Transaction'}
+                  </button>
+ 
+                  <p className="text-xs text-slate-600 text-center">
+                    Your payment is secure. Transaction ID will be provided.
+                  </p>
+                </form>
+              ) : receiptData?.receipt ? (
+                // RECEIPT DISPLAY
+                <div className="space-y-6">
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                    <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                    <h3 className="text-xl font-bold text-green-900 mb-2">✓ Payment Verified!</h3>
+                    <p className="text-green-700 mb-2">
+                      Your payment has been successfully processed.
+                    </p>
+                    <p className="text-sm text-green-600">
+                      Receipt ID: {receiptData.receipt.reference}
+                    </p>
+                  </div>
+
+                  <div 
+                    className="border border-slate-300 rounded-lg overflow-hidden h-96 bg-white"
+                    dangerouslySetInnerHTML={{ __html: receiptData.receipt.html }}
+                  />
+
+                  <div className="flex gap-3">
+                    <button
+                      onClick={downloadReceipt}
+                      className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
+                      📥 Download Receipt
+                    </button>
+                    <button
+                      onClick={() => router.push('/checkout/success')}
+                      className="flex-1 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
+                      ✓ Continue
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                // PAYMENT INSTRUCTIONS
+                <div className="space-y-6">
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                    <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                    <h3 className="text-xl font-bold text-green-900 mb-2">Transaction Created!</h3>
+                    <p className="text-green-700 mb-4">
+                      Use the information below to complete payment via Opay.
+                    </p>
+                  </div>
+ 
+                  {/* OPAY PAYMENT DETAILS */}
+                  <div className="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                    <h4 className="font-bold text-slate-900 mb-4">📱 Pay via Opay</h4>
+ 
+                    <div className="space-y-4">
+                      {/* Account Number */}
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-600 mb-2">
+                          Account Number
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <div className="flex-1 px-3 py-2 bg-white border border-slate-300 rounded text-sm font-mono text-slate-900">
+                            {OPAY_CONFIG.accountNumber}
+                          </div>
+                          <button
+                            onClick={() => copyToClipboard(OPAY_CONFIG.accountNumber)}
+                            className="p-2 hover:bg-slate-200 rounded transition-colors"
+                          >
+                            {opayAccountCopied ? (
+                              <CheckCircle2 className="w-5 h-5 text-green-600" />
+                            ) : (
+                              <Copy className="w-5 h-5 text-slate-600" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+ 
+                      {/* Account Name */}
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-600 mb-2">
+                          Account Name
+                        </label>
+                        <div className="px-3 py-2 bg-white border border-slate-300 rounded text-sm text-slate-900">
+                          {OPAY_CONFIG.accountName}
+                        </div>
+                      </div>
+ 
+                      {/* Transaction Reference */}
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-600 mb-2">
+                          Transaction Reference
+                        </label>
+                        <div className="flex items-center gap-2">
+                          <div className="flex-1 px-3 py-2 bg-white border border-slate-300 rounded text-sm font-mono text-slate-900">
+                            {transactionRef}
+                          </div>
+                          <button
+                            onClick={() => copyToClipboard(transactionRef)}
+                            className="p-2 hover:bg-slate-200 rounded transition-colors"
+                          >
+                            <Copy className="w-5 h-5 text-slate-600" />
+                          </button>
+                        </div>
+                      </div>
+ 
+                      {/* Amount */}
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-600 mb-2">
+                          Amount to Pay
+                        </label>
+                        <div className="text-2xl font-bold text-slate-900">
+                          ₦{plan.price.toLocaleString()}
         }, 2000);
       }
     } catch (error) {
@@ -316,20 +557,27 @@ export default function CheckoutPage() {
                     </ol>
                   </div>
  
-                  {/* CONFIRMATION */}
-                  <button
-                    onClick={() => {
-                      toast.success('Payment instructions sent to your email');
-                      router.push('/checkout/success');
-                    }}
-                    className="w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors"
-                  >
-                    I've Made the Payment
-                  </button>
- 
-                  <p className="text-xs text-slate-600 text-center">
-                    Payment confirmation may take a few minutes. We'll email you once verified.
-                  </p>
+                  {/* PAYMENT VERIFICATION */}
+                  <div className="space-y-3">
+                    <button
+                      onClick={verifyPayment}
+                      disabled={verifying}
+                      className="w-full px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      {verifying ? 'Verifying Payment...' : '✓ Verify Payment & Get Receipt'}
+                    </button>
+
+                    <p className="text-xs text-slate-600 text-center">
+                      After making payment, click verify to check status and download receipt.
+                    </p>
+
+                    <button
+                      onClick={() => setPaymentInitiated(false)}
+                      className="w-full px-6 py-3 bg-slate-200 hover:bg-slate-300 text-slate-900 font-semibold rounded-lg transition-colors"
+                    >
+                      Back
+                    </button>
+                  </div>
                 </div>
               )}
             </motion.div>

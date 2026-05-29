@@ -9,7 +9,8 @@ env/
 .venv
 .sixth
 .claude
-
+SEO.md
+Payment_SYSTEM_GUIDE.md
 
 # Environment
 .env
