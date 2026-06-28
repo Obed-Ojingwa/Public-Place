@@ -8,7 +8,7 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from 'sonner';
 import { ClerkProvider } from '@clerk/nextjs';
-
+import { MessageCircle } from 'lucide-react';
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
@@ -58,6 +58,10 @@ export default function RootLayout({
 }) {
   const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string;
   const clerkFrontendApi = process.env.NEXT_PUBLIC_CLERK_FRONTEND_API as string;
+  const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE;
+  const whatsappHref = whatsappPhone
+    ? `https://wa.me/${whatsappPhone.replace(/[^+\d]/g, '')}`
+    : null;
 
   return (
     <html lang="en" className={cn(GeistSans.variable, GeistMono.variable, "font-sans", inter.variable)}>
@@ -69,6 +73,17 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <Toaster richColors position="top-right" />
+          {whatsappHref && (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with us on WhatsApp"
+              className="fixed right-4 bottom-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition-colors"
+            >
+              <MessageCircle className="w-7 h-7" />
+            </a>
+          )}
         </ClerkProvider>
       </body>
     </html>

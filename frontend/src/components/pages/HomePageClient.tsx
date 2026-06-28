@@ -10,6 +10,8 @@ import FAQ from '@/components/sections/FAQ';
 import FeaturedCaseStudy from '@/components/sections/FeaturedCaseStudy';
 import TrustBadges from '@/components/sections/TrustBadges';
 
+const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1-555-SEO-FAST';
+
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -21,7 +23,8 @@ const organizationSchema = {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
     email: 'hello@nerdpace.com',
-    telephone: '+1-555-SEO-FAST',
+    // TODO: Replace with real contact phone number - set NEXT_PUBLIC_CONTACT_PHONE in .env.local
+    telephone: contactPhone,
   },
   sameAs: [
     'https://twitter.com/nerdpace',
@@ -156,17 +159,17 @@ export default function HomePageClient() {
               <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Link
                   href="/audit"
-                  className="inline-flex items-center justify-center px-9 py-4 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-0.5 shadow-2xl shadow-sky-500/20"
+                  className="flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
                 >
                   Book Free SEO Audit
-                  <ArrowRight className="ml-3 w-5 h-5" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center justify-center px-9 py-4 bg-slate-800/90 hover:bg-slate-800 text-slate-200 font-semibold rounded-full border border-slate-700 transition-all duration-300"
+                  className="flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
                 >
                   Explore Services
-                  <ArrowRight className="ml-3 w-5 h-5" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </motion.div>
 
@@ -274,7 +277,7 @@ export default function HomePageClient() {
             >
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
               >
                 View All Services
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -409,7 +412,7 @@ export default function HomePageClient() {
                 </ul>
                 <Link
                   href="/audit"
-                  className="block w-full text-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-colors"
+                  className="block w-full text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
                 >
                   Get Started
                 </Link>
@@ -454,7 +457,7 @@ export default function HomePageClient() {
                 </ul>
                 <Link
                   href="/contact"
-                  className="block w-full text-center px-6 py-3 bg-white hover:bg-slate-100 text-blue-600 font-semibold rounded-lg transition-colors"
+                  className="block w-full text-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
                 >
                   Schedule Call
                 </Link>
@@ -490,7 +493,7 @@ export default function HomePageClient() {
                 </ul>
                 <Link
                   href="/contact"
-                  className="block w-full text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+                  className="block w-full text-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
                 >
                   Get in Touch
                 </Link>

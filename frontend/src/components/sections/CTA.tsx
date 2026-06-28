@@ -24,14 +24,14 @@ export default function CTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/audit"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-slate-100 text-blue-600 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Get Your Free Audit
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 hover:bg-blue-900 text-white font-semibold rounded-lg border border-blue-500 transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
             >
               Talk to an Expert
             </Link>

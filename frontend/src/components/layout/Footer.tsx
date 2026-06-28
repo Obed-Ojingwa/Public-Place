@@ -5,6 +5,8 @@ import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Github } from 'lucid
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1-555-SEO-FAST';
+  const contactPhoneHref = contactPhone.replace(/[^+\d]/g, '');
 
   const footerLinks = {
     services: [
@@ -61,8 +63,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 text-slate-400">
                 <Phone className="w-5 h-5" />
-                <a href="tel:+15555343278" className="hover:text-white transition-colors">
-                  +1 (555) SEO-FAST
+                <a href={`tel:${contactPhoneHref}`} className="hover:text-white transition-colors">
+                  {contactPhone}
                 </a>
               </div>
               <div className="flex items-center gap-3 text-slate-400">

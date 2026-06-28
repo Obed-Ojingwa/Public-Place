@@ -4,9 +4,15 @@
  
 'use client';
 
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CheckCircle, Mail, Calendar, Download, ArrowRight } from 'lucide-react';
+ 
+export const metadata: Metadata = {
+  title: 'Payment Successful | NerdPace',
+  description: 'Your payment has been processed successfully',
+};
  
 export default function CheckoutSuccessPage() {
   return (
@@ -119,7 +125,7 @@ export default function CheckoutSuccessPage() {
                 support@nerdpace.com
               </a>{' '}
               or call{' '}
-              <a href="tel:+15555555555" className="font-semibold hover:underline">
+              <a href="tel:+2348102544186" className="font-semibold hover:underline">
                 +1 (555) SEO-FAST
               </a>
             </p>

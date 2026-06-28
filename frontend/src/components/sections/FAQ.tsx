@@ -57,20 +57,16 @@ export default function FAQ() {
               <ChevronDown className="w-5 h-5 text-slate-500 flex-shrink-0" />
             </motion.div>
           </button>
-          <AnimatePresence>
-            {openIndex === index && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="px-6 pb-5 pt-0">
-                  <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            initial={false}
+            animate={{ maxHeight: openIndex === index ? 500 : 0, opacity: openIndex === index ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 pb-5 pt-0">
+              <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+            </div>
+          </motion.div>
         </motion.div>
       ))}
     </div>
