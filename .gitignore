@@ -13,8 +13,6 @@ SEO.md
 Payment_SYSTEM_GUIDE.md
 
 # Environment
-.env
-.env.local
 .env.*.local
 
 # Build outputs
@@ -24,7 +22,6 @@ build/
 *.egg-info/
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -44,3 +41,4 @@ logs/
 # Database
 *.db
 *.sqlite
+config.bat

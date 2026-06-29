@@ -2,24 +2,29 @@
 
 import { motion } from 'framer-motion';
 
+// Trust badges configuration
+// STATUS: All badges need verification URLs to be enabled
+// To enable a badge: uncomment it and provide the real href URL to its verification/profile page
+// TODO: Before production, provide verification URLs for each badge
+
 const trustBadges = [
-  // TODO: confirm and link Google Partner - needs verification URL
-  // { name: 'Google Partner', icon: '🏆', href: 'https://partners.google.com/' },
+  // TODO: Add Google Partner verification URL
+  // { name: 'Google Partner', icon: '🏆', href: 'https://partners.google.com/YOUR_PARTNER_ID' },
 
-  // TODO: confirm and link Clutch Top SEO - needs Clutch profile URL
-  // { name: 'Clutch Top SEO', icon: '⭐', href: 'https://clutch.co/profile/[your-clutch-id]' },
+  // TODO: Add Clutch Top SEO verification URL (e.g., https://clutch.co/profile/nerdpace)
+  // { name: 'Clutch Top SEO', icon: '⭐', href: '' },
 
-  // TODO: confirm and link Inc. 5000 - needs Inc. profile URL if applicable
-  // { name: 'Inc. 5000', icon: '🚀', href: 'https://www.inc.com/inc5000/list/[year]' },
+  // TODO: Add Inc. 5000 verification URL if NerdPace is listed
+  // { name: 'Inc. 5000', icon: '🚀', href: '' },
 
-  // TODO: confirm and link G2 Leader - needs G2 profile URL
-  // { name: 'G2 Leader', icon: '🎯', href: 'https://www.g2.com/products/[your-product]/reviews' },
+  // TODO: Add G2 Leader verification URL (e.g., https://www.g2.com/products/nerdpace/reviews)
+  // { name: 'G2 Leader', icon: '🎯', href: '' },
 
-  // TODO: confirm and link HubSpot Certified - needs HubSpot partner URL
-  // { name: 'HubSpot Certified', icon: '📊', href: 'https://www.hubspotpartners.com/partners/[your-id]' },
+  // TODO: Add HubSpot Certified Partner verification URL if applicable
+  // { name: 'HubSpot Certified', icon: '📊', href: '' },
 
-  // TODO: confirm and link SEMrush Partner - needs SEMrush partner URL
-  // { name: 'SEMrush Partner', icon: '🔍', href: 'https://www.semrush.com/partners/' },
+  // TODO: Add SEMrush Partner verification URL if applicable
+  // { name: 'SEMrush Partner', icon: '🔍', href: '' },
 ];
 
 export default function TrustBadges() {

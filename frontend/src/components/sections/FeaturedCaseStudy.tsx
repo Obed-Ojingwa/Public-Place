@@ -4,12 +4,18 @@ import Link from 'next/link';
 import { ArrowRight, TrendingUp, Clock, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// TODO: Confirm if this is a real client case study or if it should be anonymized
-// Set isAnonymized to false if this is a real, named client with permission to use their name/logo
+// Featured case study configuration
+// IMPORTANT: Confirm with user before uncommenting - is this a real named client or anonymized?
+// - If real client: set isAnonymized=false, provide real clientLogo and clientWebsite URLs
+// - If anonymized: keep isAnonymized=true, leave URLs empty (display will show "Anonymized SaaS Client")
+
 const caseStudyData = {
   clientName: 'TechFlow SaaS',
-  clientLogo: '', // TODO: Add real client logo URL
-  clientWebsite: '', // TODO: Add real client website URL
+  // TODO: Add real client logo URL (e.g., from their website or CDN storage)
+  clientLogo: '', // Needs real logo URL
+  // TODO: Add real client website URL (e.g., https://techflow.example.com)
+  clientWebsite: '', // Needs real website URL
+  // Set to false if this is a real, named client with permission to use their name/logo
   isAnonymized: true, // Set to false if this is a real, named client
   results: 'How we helped a B2B SaaS company increase organic traffic by 650% and reduce customer acquisition costs by 40%.',
   metrics: [
