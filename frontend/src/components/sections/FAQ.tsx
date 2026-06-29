@@ -31,11 +31,39 @@ const faqs = [
   },
 ];
 
+// NOTE: FAQ answers are present in the initial server-rendered HTML (not hidden/removed).
+// They are visually hidden (max-height: 0, opacity: 0) until the accordion button is clicked.
+// This ensures:
+// 1. Search engines can crawl the FAQ text in the initial HTML
+// 2. FAQ schema markup is properly structured for rich snippets
+// 3. Users get a smooth animation UX when expanding/collapsing
+
+// Generate FAQ schema markup for Google rich snippets
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="space-y-4">
+    <>
+      {/* FAQ Schema Markup for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      
+      <div className="space-y-4">
       {faqs.map((faq, index) => (
         <motion.div
           key={index}
@@ -69,6 +97,7 @@ export default function FAQ() {
           </motion.div>
         </motion.div>
       ))}
-    </div>
+      </div>
+    </>
   );
 }
