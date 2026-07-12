@@ -9,9 +9,9 @@ from typing import List
 from datetime import datetime
  
 from app.models.blog import BlogPost
-from app.models.schemas import BlogPostCreate, BlogPostResponse
+from app.schemas.blog import BlogPostCreate, BlogPostResponse
 from app.db.session import get_db
-from app.crud.blog import blog as crud_blog
+from app.models.blog import blog as crud_blog
  
 router = APIRouter()
  

@@ -10,7 +10,7 @@ import FAQ from '@/components/sections/FAQ';
 import FeaturedCaseStudy from '@/components/sections/FeaturedCaseStudy';
 import TrustBadges from '@/components/sections/TrustBadges';
 
-const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1-555-SEO-FAST';
+const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186-SEO-FAST';
 
 const organizationSchema = {
   '@context': 'https://schema.org',

@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Github } from 'lucid
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1-555-SEO-FAST';
+  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186 SEO-FAST';
   const contactPhoneHref = contactPhone.replace(/[^+\d]/g, '');
 
   const footerLinks = {

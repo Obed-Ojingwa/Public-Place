@@ -11,6 +11,10 @@ env/
 .claude
 SEO.md
 Payment_SYSTEM_GUIDE.md
+SEO_instruction.md
+README.md
+RENDER_DEPLOYMENT_READY.md
+00_START_HERE.md
 
 # Environment
 .env

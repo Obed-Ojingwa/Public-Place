@@ -126,7 +126,7 @@ export default function CheckoutSuccessPage() {
               </a>{' '}
               or call{' '}
               <a href="tel:+2348102544186" className="font-semibold hover:underline">
-                +1 (555) SEO-FAST
+                +234 SEO-FAST
               </a>
             </p>
           </div>
