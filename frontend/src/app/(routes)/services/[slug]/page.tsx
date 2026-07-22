@@ -4,10 +4,9 @@ import Link from 'next/link';
 const services = [
   {
     id: 'technical-seo',
-    title: 'Technical SEO',
-    subtitle: 'Optimize your website’s technical foundation for search performance.',
-    description:
-      'Technical SEO ensures search engines can crawl, index, and rank your website reliably. We focus on speed, mobile friendliness, architecture, schema, and crawl efficiency so your site performs at its best.',
+    title: 'Technical SEO Services in Lagos Nigeria | NerdPace',
+    subtitle: 'Technical SEO Services for Startups and Growing Businesses',
+    description: 'NerdPace audits and rebuilds your site\'s technical foundation — crawlability, indexation, Core Web Vitals, schema markup. Lagos-based. Serving clients globally. Book a free audit.',
     details: [
       'Comprehensive site health audit',
       'Core Web Vitals and page speed improvement',
@@ -22,10 +21,9 @@ const services = [
   },
   {
     id: 'local-seo',
-    title: 'Local SEO',
-    subtitle: 'Get found by nearby customers when they search for your services.',
-    description:
-      'Local SEO makes your business visible across Google Maps, local search results, and neighborhood-based queries. We optimize your presence for location intent, reviews, citations, and local content.',
+    title: 'Local SEO Services Lagos Nigeria | Rank in Your City — NerdPace',
+    subtitle: 'Local SEO Services — Get Discovered in Lagos and Beyond',
+    description: 'Get your Lagos business found on Google. NerdPace handles Google Business Profile, local citations, map pack rankings, and location-optimised content.',
     details: [
       'Google Business Profile optimization',
       'Local citation and directory cleanup',
@@ -40,10 +38,9 @@ const services = [
   },
   {
     id: 'content-seo',
-    title: 'Content SEO',
-    subtitle: 'Create content that ranks, engages, and converts your ideal audience.',
-    description:
-      'Content SEO blends keyword strategy, editorial quality, and searcher intent to build pages that attract traffic and turn visitors into customers. We develop content systems that scale consistently.',
+    title: 'Content SEO Services Lagos Nigeria | NerdPace',
+    subtitle: 'Content SEO Services for Nigerian Businesses',
+    description: 'NerdPace creates and optimizes content that ranks and converts your audience. We focus on keyword strategy, content quality, and searcher intent to drive organic traffic and engagement.',
     details: [
       'Keyword research and topical mapping',
       'Conversion-focused page copy',
@@ -59,10 +56,9 @@ const services = [
   {
     id: 'performance-optimization',
     aliases: ['performance'],
-    title: 'Performance Optimization',
-    subtitle: 'Speed up your site and delight users with faster experiences.',
-    description:
-      'Performance Optimization removes friction from your website by improving loading speed, Core Web Vitals, and overall user experience. Faster sites rank better and convert more visitors.',
+    title: 'Core Web Vitals & Website Performance Optimisation — NerdPace',
+    subtitle: 'Website Performance & Core Web Vitals Optimisation',
+    description: 'Fix LCP, CLS, and INP scores. NerdPace improves page speed, image optimisation, and rendering performance to boost rankings and conversions for Nigerian and global businesses.',
     details: [
       'Page speed and Web Vitals audit',
       'Image optimization and asset compression',
@@ -77,10 +73,9 @@ const services = [
   },
   {
     id: 'seo-audits',
-    title: 'SEO Audits',
-    subtitle: 'Discover the exact fixes that move rankings, traffic, and revenue.',
-    description:
-      'Our SEO audit identifies technical, content, and backlink gaps with a prioritized roadmap. You receive clear recommendations that make it easy to act and see measurable improvement.',
+    title: 'SEO Audit Services Nigeria | Full Site Health Analysis — NerdPace',
+    subtitle: 'Professional SEO Audit Services',
+    description: 'A comprehensive SEO audit covering technical health, on-page structure, backlinks, and Core Web Vitals. PDF report + 30-min strategy call included. Based in Lagos.',
     details: [
       'Technical site audit',
       'On-page SEO analysis',
@@ -95,10 +90,9 @@ const services = [
   },
   {
     id: 'consulting',
-    title: 'SEO Consulting',
-    subtitle: 'Strategic guidance and training for growing SEO teams.',
-    description:
-      'SEO Consulting helps your team build long-term capability with expert strategy, systems, and measurement frameworks. We work alongside leaders to turn SEO into a growth engine.',
+    title: 'SEO Consulting Nigeria | Strategy for Growing Teams — NerdPace',
+    subtitle: 'SEO Consulting — Strategy for Serious Growth',
+    description: 'Strategic SEO guidance for in-house teams and growing businesses in Nigeria and beyond. Roadmaps, audits, and expert oversight — not just reports.',
     details: [
       'SEO strategy development',
       'Team coaching and workshops',
@@ -108,7 +102,7 @@ const services = [
       'Quarterly planning and reviews',
     ],
     outcomes:
-      'You’ll gain scalable SEO processes, stronger execution, and a plan that aligns with business goals.',
+      'You\'ll gain scalable SEO processes, stronger execution, and a plan that aligns with business goals.',
     heroColor: 'from-slate-900 to-slate-700',
   },
 ];
@@ -137,11 +131,21 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   }
 
   return {
-    title: `${service.title} | NerdPace`,
-    description: service.subtitle,
+    title: service.title,
+    description: service.description,
+    // Note: We're not adding keywords directly in Metadata as Next.js doesn't support it directly
+    // We'll add it via a custom Head component in the client component if needed
     openGraph: {
-      title: `${service.title} | NerdPace`,
-      description: service.subtitle,
+      title: service.title,
+      description: service.description,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: service.title,
+      description: service.description,
+    },
+    alternates: {
+      canonical: `https://nerdpace.com/services/${service.id}`,
     },
   };
 }
@@ -154,7 +158,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
       <main className="min-h-screen bg-slate-950 text-slate-100 py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Service not found</h1>
-          <p className="text-slate-300 mb-6">The service you requested doesn’t exist yet. Please return to our services overview.</p>
+          <p className="text-slate-300 mb-6">The service you requested doesn\'t exist yet. Please return to our services overview.</p>
           <Link href="/services" className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
             Back to Services
           </Link>
@@ -165,11 +169,11 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
 
   return (
     <main className="overflow-hidden bg-slate-950 text-slate-100">
-      <section className={`relative min-h-[60vh] flex items-center ${service.heroColor} bg-gradient-to-br px-4 py-20`}> 
+      <section className={`relative min-h-[60vh] flex items-center ${service.heroColor} bg-gradient-to-br px-4 py-20`}>
         <div className="container mx-auto lg:flex lg:items-center lg:justify-between">
           <div className="max-w-3xl">
             <span className="inline-flex px-4 py-2 rounded-full bg-white/10 text-sm font-semibold uppercase tracking-[0.2em] text-slate-200 mb-6">
-              {service.title}
+              {service.id.replace(/-/g, ' ').toUpperCase()}
             </span>
             <h1 className="text-5xl lg:text-6xl font-bold tracking-tight mb-6">{service.title}</h1>
             <p className="text-xl text-slate-200 max-w-2xl leading-relaxed">{service.subtitle}</p>
@@ -209,7 +213,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
           <aside className="space-y-8">
             <div className="rounded-3xl border border-white/10 bg-blue-950/70 p-8 shadow-xl shadow-blue-950/20">
               <h3 className="text-2xl font-semibold text-white mb-4">Ready to grow?</h3>
-              <p className="text-slate-300 mb-6">Let’s design the exact SEO plan that fits your business and converts visitors into customers.</p>
+              <p className="text-slate-300 mb-6">Let\'s design the exact SEO plan that fits your business and converts visitors into customers.</p>
               <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 bg-white text-slate-950 rounded-full font-semibold hover:bg-slate-100 transition">
                 Contact NerdPace
               </Link>

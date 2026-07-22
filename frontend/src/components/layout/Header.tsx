@@ -42,7 +42,7 @@ export default function Header() {
             </div>
             <div>
               <p className="text-white font-semibold text-base leading-none">NerdPace</p>
-              <p className="text-slate-400 text-xs">Technical SEO for growth</p>
+              <p className="text-slate-400 text-xs">Lagos-based technical SEO & website development agency</p>
             </div>
           </Link>
 

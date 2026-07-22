@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Zap, TrendingUp, Globe, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Head from 'next/head';
 import CTA from '@/components/sections/CTA';
 import ServiceCard from '@/components/sections/ServiceCard';
 import TestimonialCarousel from '@/components/sections/TestimonialCarousel';
-import FAQ from '@/components/sections/FAQ';
 import FeaturedCaseStudy from '@/components/sections/FeaturedCaseStudy';
-import TrustBadges from '@/components/sections/TrustBadges';
+// Removed TrustBadges import
 
-const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186-SEO-FAST';
+const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -95,6 +95,17 @@ export default function HomePageClient() {
 
   return (
     <>
+      <Head>
+        {/* Geo Tags for Lagos */}
+        <meta name="geo.region" content="NG-LA" />
+        <meta name="geo.placename" content="Lagos, Nigeria" />
+        <meta name="geo.position" content="6.5244;3.3792" />
+        <meta name="ICBM" content="6.5244, 3.3792" />
+
+        {/* Additional meta tags for SEO */}
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      </Head>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -135,7 +146,7 @@ export default function HomePageClient() {
               <motion.div variants={itemVariants} className="mb-8 text-center">
                 <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-800/90 border border-slate-700 text-slate-200 text-sm font-medium tracking-wide">
                   <Zap className="w-4 h-4 text-amber-400" />
-                  Trusted by 50+ SaaS & E-commerce businesses
+                  Trusted by Haliberry Cake & growing businesses
                 </span>
               </motion.div>
 
@@ -153,42 +164,51 @@ export default function HomePageClient() {
                 variants={itemVariants}
                 className="text-xl sm:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed"
               >
-                Premium technical SEO services for startups and ambitious businesses. Improve your Core Web Vitals, rankings, and organic traffic.
+                NerdPace is a Lagos-based technical SEO and website development agency.
+                We build fast, modern websites and optimise them to rank on Google —
+                for Nigerian businesses and ambitious brands worldwide.
               </motion.p>
+
+              {/* Trust Bar (Honest - no badges, just real signals) */}
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-col space-y-3 text-slate-300 text-center max-w-xl mx-auto"
+              >
+                <div className="flex items-center justify-center gap-x-2 text-sm">
+                  <span role="img" aria-label="check mark">✓</span>
+                  <span>Based in Lagos, Nigeria</span>
+                </div>
+                <div className="flex items-center justify-center gap-x-2 text-sm">
+                  <span role="img" aria-label="check mark">✓</span>
+                  <span>Serving clients in Nigeria and internationally</span>
+                </div>
+                <div className="flex items-center justify-center gap-x-2 text-sm">
+                  <span role="img" aria-label="check mark">✓</span>
+                  <span>Built with developer-level technical depth</span>
+                </div>
+                <div className="flex items-center justify-center gap-x-2 text-sm">
+                  <span role="img" aria-label="check mark">✓</span>
+                  <span>
+                    WhatsApp us directly: <a href={`https://wa.me/${contactPhone.replace(/[^\d]/g, '')}`} className="text-slate-200 underline hover:text-white transition-colors">+234 810 254 4186</a>
+                  </span>
+                </div>
+              </motion.div>
 
               <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Link
                   href="/audit"
                   className="flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
                 >
-                  Book Free SEO Audit
+                  Book Your Free SEO Audit
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
-                  href="/services"
+                  href="/case-studies"
                   className="flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
                 >
-                  Explore Services
+                  See Our Work
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
-              </motion.div>
-
-              <motion.div
-                variants={itemVariants}
-                className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center"
-              >
-                <div className="bg-slate-900/90 rounded-3xl p-5 border border-slate-700 shadow-lg shadow-slate-950/40">
-                  <div className="text-3xl sm:text-4xl font-semibold text-sky-400">+287%</div>
-                  <div className="text-sm text-slate-400 mt-2">Average organic traffic uplift</div>
-                </div>
-                <div className="bg-slate-900/90 rounded-3xl p-5 border border-slate-700 shadow-lg shadow-slate-950/40">
-                  <div className="text-3xl sm:text-4xl font-semibold text-cyan-300">4.2s → 1.1s</div>
-                  <div className="text-sm text-slate-400 mt-2">Page load reduction for higher conversions</div>
-                </div>
-                <div className="bg-slate-900/90 rounded-3xl p-5 border border-slate-700 shadow-lg shadow-slate-950/40">
-                  <div className="text-3xl sm:text-4xl font-semibold text-violet-300">50+</div>
-                  <div className="text-sm text-slate-400 mt-2">Growth-focused clients served</div>
-                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -196,12 +216,7 @@ export default function HomePageClient() {
 
         <section className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <TrustBadges />
-          </div>
-        </section>
-
-        <section className="py-20 sm:py-24 bg-white" id="services">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Services Column - we keep the services section but update the title and description if needed */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -236,6 +251,18 @@ export default function HomePageClient() {
                 description="Optimize your site's technical foundation for better rankings and user experience."
                 href="/services/technical-seo"
               />
+              <ServiceCard
+                icon={<Globe className="w-8 h-8" />}
+                title="Local SEO"
+                description="Get discovered by customers in your area with local search optimization."
+                href="/services/local-seo"
+              />
+              <ServiceCard
+                icon={<TrendingUp className="w-8 h-8 h-8
+I'll continue from where I left off. Let me rewrite the rest of the component from memory since it got cut off.
+<tool_call>
+<function=Write>
+<parameter=content>
               <ServiceCard
                 icon={<Globe className="w-8 h-8" />}
                 title="Local SEO"
@@ -286,7 +313,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <section className="py-20 sm:py-24 bg-slate-50">
+        <section className="py-20 sm:py-24 bg-white" id="services">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               variants={containerVariants}
@@ -329,7 +356,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <section className="py-20 sm:py-24 bg-white">
+        <section className="py-20 sm:py-24 bg-slate-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               variants={containerVariants}
@@ -356,8 +383,8 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <section className="py-20 sm:py-24 bg-slate-50" id="pricing">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-20 sm:py-24 bg-white" id="pricing">
+          <div className="container mx-auto px-4 sm:px-6 lg:6px-8">
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -380,7 +407,7 @@ export default function HomePageClient() {
             </motion.div>
 
             <motion.div
-              variants={containerVariants}
+              variants={itemVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}

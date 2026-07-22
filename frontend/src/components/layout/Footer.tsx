@@ -1,138 +1,87 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Twitter, Linkedin, Instagram, Github } from 'lucide-react';
+import { Mail, Phone, MapPinTwitter, Linkedin, Github } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186 SEO-FAST';
+  const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186';
   const contactPhoneHref = contactPhone.replace(/[^+\d]/g, '');
 
-  const footerLinks = {
-    services: [
-      { name: 'Technical SEO', href: '/services/technical-seo' },
-      { name: 'Local SEO', href: '/services/local-seo' },
-      { name: 'SEO Audits', href: '/services/seo-audits' },
-      { name: 'Content SEO', href: '/services/content-seo' },
-      { name: 'Performance Optimization', href: '/services/performance' },
-    ],
-    company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Case Studies', href: '/case-studies' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Careers', href: '/careers' },
-      { name: 'Contact', href: '/contact' },
-    ],
-    resources: [
-      { name: 'SEO Guide', href: '/resources/seo-guide' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'FAQ', href: '/faq' },
-      { name: 'Support', href: '/support' },
-      { name: 'Privacy Policy', href: '/privacy' },
-    ],
-  };
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: 'Email',
+      value: 'hello@nerdpace.com',
+      href: 'mailto:hello@nerdpace.com',
+    },
+    {
+      icon: Phone,
+      label: 'Phone/WhatsApp',
+      value: '+234 810 254 4186',
+      href: `https://wa.me/${contactPhoneHref}`,
+    },
+    {
+      icon: MapPin,
+      label: 'Location',
+      value: 'Lagos, Nigeria',
+      href: '#',
+    },
+  ];
 
   const socialLinks = [
-    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/nerdpace' },
+    { name: 'Twitter/X', icon: Twitter, href: 'https://twitter.com/nerdpace' },
     { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/nerdpace' },
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/nerdpace' },
-    { name: 'GitHub', icon: Github, href: 'https://github.com/nerdpace' },
+    { name: 'GitHub', icon: Github, href: 'https://github.com/Obed-Ojingwa' },
   ];
 
   return (
     <footer className="bg-slate-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-8">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
+          <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center gap-2 mb-6">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">N</span>
               </div>
               <span className="font-bold text-xl">NerdPace</span>
             </Link>
-            <p className="text-slate-400 mb-6 max-w-sm">
-              Premium technical SEO services for startups and ambitious businesses. We help you rank higher, load faster, and get discovered online.
+            <p className="text-slate-400 mb-6 max-w-xl">
+              Lagos-based technical SEO and website development agency helping Nigerian startups and global businesses rank higher and grow organically.
             </p>
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 text-slate-400">
-                <Mail className="w-5 h-5" />
-                <a href="mailto:hello@nerdpace.com" className="hover:text-white transition-colors">
-                  hello@nerdpace.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-slate-400">
-                <Phone className="w-5 h-5" />
-                <a href={`tel:${contactPhoneHref}`} className="hover:text-white transition-colors">
-                  {contactPhone}
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-slate-400">
-                <MapPin className="w-5 h-5" />
-                <span>San Francisco, CA</span>
-              </div>
+            <div className="space-y-3 text-slate-400">
+              {contactInfo.map((info) => (
+                <div key={info.label} className="flex items-start space-x-3">
+                  {info.icon && (
+                    <div className="flex-shrink-0 h-5 w-5 flex items-center justify-center">
+                      {info.icon}
+                    </div>
+                  )}
+                  <div>
+                    {info.label && (
+                      <span className="font-medium text-slate-300">{info.label}:</span>
+                    )}
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="text-slate-200 hover:text-white transition-colors"
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <span className="text-slate-200">{info.value}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Services Column */}
-          <div>
-            <h3 className="font-bold text-lg mb-6">Services</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Column */}
-          <div>
-            <h3 className="font-bold text-lg mb-6">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources Column */}
-          <div>
-            <h3 className="font-bold text-lg mb-6">Resources</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-slate-400 text-sm">
-              © {currentYear} NerdPace. All rights reserved.
-            </p>
-            <div className="flex gap-4">
+          {/* Social Column */}
+          <div className="flex items-start">
+            <h3 className="font-bold text-lg mb-4 text-white">Connect</h3>
+            <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -142,11 +91,18 @@ export default function Footer() {
                   className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
                   aria-label={social.name}
                 >
-                  <social.icon className="w-5 h-5" />
+                  {social.icon}
                 </a>
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-slate-800">
+          <p className="text-slate-400 text-sm text-center">
+            © {currentYear} NerdPace. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

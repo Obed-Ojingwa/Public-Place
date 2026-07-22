@@ -7,27 +7,27 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     question: 'How long does it take to see SEO results?',
-    answer: 'Most clients see measurable improvements within 4-8 weeks, with significant traffic increases by 3-6 months. Results depend on current site status and competitiveness of your keywords.',
+    answer: 'SEO is a long-term strategy. We focus on making technical improvements that help search engines understand and rank your site better. The timeline for seeing results varies based on your website's current state, industry, and competition, but we prioritize actions that can improve crawlability and indexation quickly.',
   },
   {
     question: 'Do you guarantee ranking improvements?',
-    answer: 'We guarantee an improvement in your Core Web Vitals, on-page SEO optimization, and technical health. We cannot guarantee rankings, as Google controls that, but our strategies typically result in 40-60% traffic increases.',
+    answer: 'We cannot guarantee specific rankings because search engine algorithms are complex and constantly changing. What we guarantee is our commitment to technical excellence, transparent communication, and delivering measurable improvements in your website\'s technical health and search visibility.',
   },
   {
     question: 'What\'s included in the free audit?',
-    answer: 'Our free audit includes a comprehensive technical analysis, Core Web Vitals assessment, on-page SEO review, and a prioritized action plan with specific recommendations.',
+    answer: 'Our free audit includes a technical site health check, Core Web Vitals assessment, on-page SEO review, and a prioritized action plan with recommendations to improve your site\'s search performance.',
   },
   {
     question: 'How do you measure success?',
-    answer: 'We track organic traffic growth, keyword rankings, Core Web Vitals scores, conversion rates, and ROI. You\'ll receive monthly reports with detailed metrics and insights.',
+    answer: 'We track improvements in technical SEO health (like crawl errors, site speed), keyword rankings, and organic traffic. We provide regular reports showing progress and areas for further optimization.',
   },
   {
     question: 'Do you work with small businesses?',
-    answer: 'Absolutely! We work with businesses of all sizes. Our starter audit is perfect for small businesses looking to improve their SEO foundation.',
+    answer: 'Yes, we work with businesses of all sizes. Our services are scalable, and we offer tailored solutions to fit different budgets and goals.',
   },
   {
     question: 'What industries do you specialize in?',
-    answer: 'We have deep experience with SaaS, e-commerce, local businesses, and B2B services. Our technical SEO approach works across all industries.',
+    answer: 'Our technical SEO approach is effective across industries. We have experience working with various types of businesses, including local services, e-commerce, and content-driven sites, adapting our strategies to each unique context.',
   },
 ];
 
@@ -62,7 +62,7 @@ export default function FAQ() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      
+
       <div className="space-y-4">
       {faqs.map((faq, index) => (
         <motion.div

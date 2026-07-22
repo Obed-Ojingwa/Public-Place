@@ -1,18 +1,32 @@
+import { Metadata } from 'next';
 // ============================================================================
 // BLOG SYSTEM - COMPLETE FRONTEND + BACKEND IMPLEMENTATION
 // ============================================================================
- 
-// FILE 1: Frontend Blog Index Page
-// Path: C:\Users\[YourUsername]\Documents\nerdpace\frontend\src\app\(routes)\blog\page.tsx
- 
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | NerdPace',
+    default: 'SEO & AI Search Optimization Blog | NerdPace Nigeria',
+  },
+  description: 'Technical SEO guides, AI search insights, and original research from NerdPace. Written for founders, developers, and marketers who want substance over noise.',
+  // Note: We're not adding keywords directly in Metadata as Next.js doesn't support it directly
+  // We'll add it via a custom Head component in the client component if needed
+  authors: [{ name: 'NerdPace' }],
+  creator: 'NerdPace',
+  publisher: 'NerdPace',
+  alternates: {
+    canonical: 'https://nerdpace.com/blog',
+  },
+};
+
 'use client';
- 
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, ArrowRight, Calendar, User } from 'lucide-react';
- 
+
 interface BlogPost {
   id: string;
   slug: string;
@@ -27,16 +41,16 @@ interface BlogPost {
   published_at: string;
   views_count: number;
 }
- 
+
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
- 
+
   const categories = ['all', 'technical-seo', 'local-seo', 'content-seo', 'performance', 'business'];
- 
+
   useEffect(() => {
     // Fetch blog posts from API
     const fetchPosts = async () => {
@@ -53,18 +67,18 @@ export default function BlogPage() {
         setLoading(false);
       }
     };
- 
+
     fetchPosts();
   }, []);
- 
+
   useEffect(() => {
     // Filter posts
     let filtered = posts;
- 
+
     if (selectedCategory !== 'all') {
       filtered = filtered.filter((post) => post.category === selectedCategory);
     }
- 
+
     if (searchTerm) {
       filtered = filtered.filter(
         (post) =>
@@ -72,10 +86,10 @@ export default function BlogPage() {
           post.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
- 
+
     setFilteredPosts(filtered);
   }, [searchTerm, selectedCategory, posts]);
- 
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -83,16 +97,16 @@ export default function BlogPage() {
       transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
   };
- 
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
- 
+
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
- 
+
   return (
     <main className="overflow-hidden">
       {/* HERO */}
@@ -116,7 +130,7 @@ export default function BlogPage() {
             >
               Expert articles on technical SEO, rankings, and organic growth
             </motion.p>
- 
+
             {/* Search */}
             <motion.div variants={itemVariants} className="max-w-md mx-auto">
               <div className="relative">
@@ -133,7 +147,7 @@ export default function BlogPage() {
           </motion.div>
         </div>
       </section>
- 
+
       {/* CATEGORIES */}
       <section className="py-12 bg-slate-800 border-b border-slate-700">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +175,7 @@ export default function BlogPage() {
           </motion.div>
         </div>
       </section>
- 
+
       {/* FEATURED POST */}
       {filteredPosts.length > 0 && (
         <section className="py-20 bg-white">
@@ -210,7 +224,7 @@ export default function BlogPage() {
           </div>
         </section>
       )}
- 
+
       {/* POSTS GRID */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +237,7 @@ export default function BlogPage() {
             {filteredPosts.length > 1 && (
               <h2 className="text-3xl font-bold text-slate-900 mb-8">Recent Articles</h2>
             )}
- 
+
             {filteredPosts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPosts.slice(1).map((post) => (
@@ -243,19 +257,19 @@ export default function BlogPage() {
                         />
                       </div>
                     )}
- 
+
                     {/* Content */}
                     <div className="p-6">
                       <span className="inline-block px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-semibold mb-3">
                         {post.category.replace('-', ' ').toUpperCase()}
                       </span>
- 
+
                       <h3 className="text-xl font-bold text-slate-900 mb-2 line-clamp-2 hover:text-blue-600">
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </h3>
- 
+
                       <p className="text-slate-600 text-sm mb-4 line-clamp-2">{post.description}</p>
- 
+
                       {/* Meta */}
                       <div className="flex items-center gap-4 text-xs text-slate-500 mb-4 pb-4 border-b border-slate-200">
                         <div className="flex items-center gap-1">
@@ -268,7 +282,7 @@ export default function BlogPage() {
                         </div>
                         <div>{post.read_time_minutes} min read</div>
                       </div>
- 
+
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {post.tags.slice(0, 2).map((tag) => (
@@ -277,7 +291,7 @@ export default function BlogPage() {
                           </span>
                         ))}
                       </div>
- 
+
                       <Link
                         href={`/blog/${post.slug}`}
                         className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700"
@@ -296,7 +310,7 @@ export default function BlogPage() {
           </motion.div>
         </div>
       </section>
- 
+
       {/* NEWSLETTER CTA */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-600">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

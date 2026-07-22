@@ -1,42 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, TrendingUp, Clock, Users } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Featured case study configuration
-// IMPORTANT: Confirm with user before uncommenting - is this a real named client or anonymized?
-// - If real client: set isAnonymized=false, provide real clientLogo and clientWebsite URLs
-// - If anonymized: keep isAnonymized=true, leave URLs empty (display will show "Anonymized SaaS Client")
-
-const caseStudyData = {
-  clientName: 'TechFlow SaaS',
-  // TODO: Add real client logo URL (e.g., from their website or CDN storage)
-  clientLogo: '', // Needs real logo URL
-  // TODO: Add real client website URL (e.g., https://techflow.example.com)
-  clientWebsite: '', // Needs real website URL
-  // Set to false if this is a real, named client with permission to use their name/logo
-  isAnonymized: true, // Set to false if this is a real, named client
-  results: 'How we helped a B2B SaaS company increase organic traffic by 650% and reduce customer acquisition costs by 40%.',
-  metrics: [
-    { label: 'Organic Traffic', value: '+650%', icon: <TrendingUp className="w-6 h-6" />, bgColor: 'bg-blue-100', textColor: 'text-blue-600' },
-    { label: 'Time to Results', value: '6 months', icon: <Clock className="w-6 h-6" />, bgColor: 'bg-green-100', textColor: 'text-green-600' },
-    { label: 'CAC Reduction', value: '-40%', icon: <Users className="w-6 h-6" />, bgColor: 'bg-purple-100', textColor: 'text-purple-600' },
-  ],
-  keyImprovements: [
-    'Technical SEO optimization',
-    'Core Web Vitals improvement',
-    'Content strategy implementation',
-    'Link building campaign',
-  ],
-};
-
 export default function FeaturedCaseStudy() {
-  const displayName = caseStudyData.isAnonymized ? 'Anonymized SaaS Client' : caseStudyData.clientName;
-  const clientNameDisplay = caseStudyData.isAnonymized
-    ? `${caseStudyData.clientName} (results verifiable on request)`
-    : caseStudyData.clientName;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -50,54 +18,44 @@ export default function FeaturedCaseStudy() {
           <span className="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full mb-4 w-fit">
             Featured Case Study
           </span>
-          <h3 className="text-3xl font-bold text-white mb-4">{displayName}</h3>
+          <h3 className="text-3xl font-bold text-white mb-4">
+            Haliberry Cake
+          </h3>
           <p className="text-blue-100 mb-6">
-            {caseStudyData.results}
+            We designed and developed a custom website with online ordering and implemented technical SEO from the ground up. The new site allows customers to browse products, customize orders, and make secure payments online.
           </p>
-          {caseStudyData.clientWebsite && (
-            <Link
-              href={caseStudyData.clientWebsite}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
-            >
-              Visit {clientNameDisplay}'s Website
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          )}
-          {!caseStudyData.clientWebsite && (
-            <Link
-              href="/case-studies/techflow"
-              className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
-            >
-              Read Full Case Study
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          )}
+          <Link
+            href="/case-studies/haliberry-cake"
+            className="inline-flex items-center justify-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
+          >
+            Read Case Study
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Link>
         </div>
         <div className="p-8 lg:p-12 bg-slate-50">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {caseStudyData.metrics.map((metric, index) => (
-              <div key={index} className="text-center">
-                <div className={`w-12 h-12 rounded-lg ${metric.bgColor} flex items-center justify-center ${metric.textColor} mx-auto mb-3`}>
-                  {metric.icon}
-                </div>
-                <div className="text-3xl font-bold text-slate-900 mb-1">{metric.value}</div>
-                <div className="text-sm text-slate-600">{metric.label}</div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 pt-8 border-t border-slate-200">
-            <h4 className="font-bold text-slate-900 mb-4">Key Improvements</h4>
-            <ul className="space-y-2">
-              {caseStudyData.keyImprovements.map((improvement, index) => (
-                <li key={index} className="flex items-center text-slate-700">
-                  <span className="w-2 h-2 rounded-full bg-blue-600 mr-3"></span>
-                  {improvement}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <h4 className="font-bold text-slate-900 mb-4">What We Did:</h4>
+          <ul className="space-y-2">
+            <li className="flex items-center text-slate-700">
+              <span className="w-2 h-2 rounded-full bg-blue-600 mr-3"></span>
+              Custom website design and development
+            </li>
+            <li className="flex items-center text-slate-700">
+              <span className="w-2 h-2 rounded-full bg-blue-600 mr-3"></span>
+              Online ordering system with cake customisation
+            </li>
+            <li className="flex items-center text-slate-700">
+              <span className="w-2 h-2 rounded-full bg-blue-600 mr-3"></span>
+              Secure payment processing
+            </li>
+            <li className="flex items-center text-slate-700">
+              <span className="w-2 h-2 rounded-full bg-blue-600 mr-3"></span>
+              Technical SEO implementation (meta tags, schema, Core Web Vitals)
+            </li>
+            <li className="flex items-center text-slate-700">
+              <span className="w-2 h-2 rounded-full bg-blue-600 mr-3"></span>
+              Performance optimization for fast loading
+            </li>
+          </ul>
         </div>
       </div>
     </motion.div>

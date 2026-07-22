@@ -1,16 +1,33 @@
+import { Metadata } from 'next';
 // ============================================================================
 // FIX 4: Fix Free Audit Button & Page
 // Path: C:\Users\[YourUsername]\Documents\nerdpace\frontend\src\app\(routes)\audit\page.tsx
- 
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | NerdPace',
+    default: 'Free SEO Audit Nigeria | Free Website Analysis — NerdPace',
+  },
+  description: 'Get a free, comprehensive SEO audit covering technical health, on-page SEO, backlinks, and Core Web Vitals. PDF report + 30-min strategy call included. Based in Lagos.',
+  // Note: We're not adding keywords directly in Metadata as Next.js doesn't support it directly
+  // We'll add it via a custom Head component in the client component if needed
+  authors: [{ name: 'NerdPace' }],
+  creator: 'NerdPace',
+  publisher: 'NerdPace',
+  alternates: {
+    canonical: 'https://nerdpace.com/audit',
+  },
+};
+
 'use client';
- 
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { CheckCircle, Zap, TrendingUp, ArrowRight, Send } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
- 
+
 interface AuditFormData {
   website: string;
   name: string;
@@ -18,12 +35,12 @@ interface AuditFormData {
   company: string;
   industry: string;
 }
- 
+
 export default function AuditPage() {
   const { register, handleSubmit, reset } = useForm<AuditFormData>();
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
- 
+
   const onSubmit = async (data: AuditFormData) => {
     setSubmitting(true);
     try {
@@ -44,17 +61,17 @@ export default function AuditPage() {
         console.error('API Error:', error);
         throw new Error('Failed to connect to server. Ensure backend is running.');
       });
- 
+
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
       }
- 
+
       const result = await response.json();
-      
+
       setSubmitted(true);
       reset();
       toast.success('Audit request submitted! Check your email for results.');
-      
+
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
@@ -69,7 +86,7 @@ export default function AuditPage() {
       setSubmitting(false);
     }
   };
- 
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -77,12 +94,12 @@ export default function AuditPage() {
       transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
   };
- 
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
- 
+
   return (
     <main className="overflow-hidden">
       {/* HERO */}
@@ -109,7 +126,7 @@ export default function AuditPage() {
           </motion.div>
         </div>
       </section>
- 
+
       {/* CONTENT */}
       <section className="py-20 sm:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -124,7 +141,7 @@ export default function AuditPage() {
               <motion.h2 variants={itemVariants} className="text-3xl font-bold text-slate-900 mb-8">
                 {!submitted ? 'Request Your Audit' : 'Thank You!'}
               </motion.h2>
- 
+
               {!submitted ? (
                 <motion.form
                   variants={itemVariants}
@@ -138,7 +155,7 @@ export default function AuditPage() {
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
- 
+
                   <div className="grid grid-cols-2 gap-4">
                     <input
                       {...register('name', { required: true })}
@@ -155,14 +172,14 @@ export default function AuditPage() {
                       required
                     />
                   </div>
- 
+
                   <input
                     {...register('company')}
                     type="text"
                     placeholder="Company Name (optional)"
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
- 
+
                   <select
                     {...register('industry')}
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -174,7 +191,7 @@ export default function AuditPage() {
                     <option value="agency">Agency</option>
                     <option value="other">Other</option>
                   </select>
- 
+
                   <button
                     type="submit"
                     disabled={submitting}
@@ -203,7 +220,7 @@ export default function AuditPage() {
                 </motion.div>
               )}
             </motion.div>
- 
+
             {/* BENEFITS */}
             <motion.div
               variants={containerVariants}
@@ -214,7 +231,7 @@ export default function AuditPage() {
               <motion.h3 variants={itemVariants} className="text-2xl font-bold text-slate-900 mb-8">
                 What's Included
               </motion.h3>
- 
+
               <div className="space-y-4">
                 {[
                   {
@@ -259,7 +276,7 @@ export default function AuditPage() {
           </div>
         </div>
       </section>
- 
+
       {/* FAQ */}
       <section className="py-20 sm:py-24 bg-slate-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
@@ -271,7 +288,7 @@ export default function AuditPage() {
           >
             FAQ
           </motion.h2>
- 
+
           <div className="space-y-4">
             {[
               {
