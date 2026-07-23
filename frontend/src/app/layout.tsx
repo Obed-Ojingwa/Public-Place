@@ -93,14 +93,15 @@ export default function RootLayout({
               <MessageCircle className="w-7 h-7" />
             </a>
           )}
+
           {/* Additional meta tags for SEO that are not covered by the Metadata object */}
           {/* We'll add them here for safety, but note that the Head component is not available in the root layout in the same way as in pages. */}
           {/* However, we can add them as children of the <html> or <body> but that is not valid. */}
-          /* We'll instead rely on the Metadata object and hope that the Next.js Head component in the pages will pick up the rest. */
-          /* Since we are using the Metadata object, we can only set what it supports. */
-          /* For the unsupported ones, we will need to use a custom Head component in each page or use a layout that includes a Head. */
-          /* Given the constraints, we will update the pages individually to include the missing meta tags. */
-          /* For now, we'll just output a comment to remind ourselves. */
+          {/* We'll instead rely on the Metadata object and hope that the Next.js Head component in the pages will pick up the rest. */}
+          {/* /* Since we are using the Metadata object, we can only set what it supports. */ */}
+          {/* /* For the unsupported ones, we will need to use a custom Head component in each page or use a layout that includes a Head. */ */}
+          {/* Given the constraints, we will update the pages individually to include the missing meta tags. */}
+          {/* For now, we'll just output a comment to remind ourselves. */}
           {/* TODO: Add geo, icwm, and other meta tags via a custom Head component in each page or a shared layout. */}
         </ClerkProvider>
       </body>
