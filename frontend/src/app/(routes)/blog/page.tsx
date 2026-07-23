@@ -1,24 +1,3 @@
-import { Metadata } from 'next';
-// ============================================================================
-// BLOG SYSTEM - COMPLETE FRONTEND + BACKEND IMPLEMENTATION
-// ============================================================================
-
-export const metadata: Metadata = {
-  title: {
-    template: '%s | NerdPace',
-    default: 'SEO & AI Search Optimization Blog | NerdPace Nigeria',
-  },
-  description: 'Technical SEO guides, AI search insights, and original research from NerdPace. Written for founders, developers, and marketers who want substance over noise.',
-  // Note: We're not adding keywords directly in Metadata as Next.js doesn't support it directly
-  // We'll add it via a custom Head component in the client component if needed
-  authors: [{ name: 'NerdPace' }],
-  creator: 'NerdPace',
-  publisher: 'NerdPace',
-  alternates: {
-    canonical: 'https://nerdpace.com/blog',
-  },
-};
-
 'use client';
 
 import { useState, useEffect } from 'react';

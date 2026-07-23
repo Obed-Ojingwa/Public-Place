@@ -1,86 +1,19 @@
+// ============================================================================
+// FIX 1: Correct About Page Structure
+// Path: C:\Users\[YourUsername]\Documents\nerdpace\frontend\src\app\(routes)\about\page.tsx
+
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Zap, TrendingUp, Globe, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
-import CTA from '@/components/sections/CTA';
-import ServiceCard from '@/components/sections/ServiceCard';
-import TestimonialCarousel from '@/components/sections/TestimonialCarousel';
-import FeaturedCaseStudy from '@/components/sections/FeaturedCaseStudy';
-// Removed TrustBadges import
-
-const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+2348102544186';
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'NerdPace',
-  url: 'https://nerdpace.com',
-  logo: 'https://nerdpace.com/logo.png',
-  description: 'Technical SEO and growth agency specializing in ranking, speed, and visibility',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'Customer Service',
-    email: 'hello@nerdpace.com',
-    // TODO: Replace with real contact phone number - set NEXT_PUBLIC_CONTACT_PHONE in .env.local
-    telephone: contactPhone,
-  },
-  sameAs: [
-    'https://twitter.com/nerdpace',
-    'https://linkedin.com/company/nerdpace',
-    'https://instagram.com/nerdpace',
-  ],
-};
-
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Technical SEO Optimization',
-  description: 'Comprehensive SEO audit and optimization for better rankings and faster loading',
-  provider: {
-    '@type': 'Organization',
-    name: 'NerdPace',
-  },
-  areaServed: 'Worldwide',
-  availableChannel: {
-    '@type': 'ServiceChannel',
-    serviceUrl: 'https://nerdpace.com/services',
-  },
-};
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How long does it take to see SEO results?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Most clients see measurable improvements within 4-8 weeks, with significant traffic increases by 3-6 months. Results depend on current site status and competitiveness of your keywords.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you guarantee ranking improvements?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We guarantee an improvement in your Core Web Vitals, on-page SEO optimization, and technical health. We cannot guarantee rankings, as Google controls that, but our strategies typically result in 40-60% traffic increases.',
-      },
-    },
-  ],
-};
+import { CheckCircle, Users, Award, Zap, Linkedin, Github } from 'lucide-react';
 
 export default function HomePageClient() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
   };
 
@@ -95,31 +28,85 @@ export default function HomePageClient() {
 
   return (
     <>
-      <Head>
-        {/* Geo Tags for Lagos */}
-        <meta name="geo.region" content="NG-LA" />
-        <meta name="geo.placename" content="Lagos, Nigeria" />
-        <meta name="geo.position" content="6.5244;3.3792" />
-        <meta name="ICBM" content="6.5244, 3.3792" />
-
-        {/* Additional meta tags for SEO */}
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      </Head>
-
+      {/* JSON-LD Organization Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "NerdPace",
+            url: "https://nerdpace.com",
+            logo: "https://nerdpace.com/logo.png",
+            description: "Technical SEO and growth agency specializing in ranking, speed, and visibility",
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "Customer Service",
+              email: "hello@nerdpace.com",
+              telephone: "+2348102544186",
+            },
+            sameAs: [
+              "https://twitter.com/nerdpace",
+              "https://linkedin.com/company/nerdpace",
+              "https://instagram.com/nerdpace",
+            ],
+          }),
+        }}
       />
+
+      {/* JSON-LD Service Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Technical SEO Optimization",
+            description: "Comprehensive SEO audit and optimization for better rankings and faster loading",
+            provider: {
+              "@type": "Organization",
+              name: "NerdPace",
+            },
+            areaServed: "Worldwide",
+            availableChannel: {
+              "@type": "ServiceChannel",
+              serviceUrl: "https://nerdpace.com/services",
+            },
+          }),
+        }}
       />
+
+      {/* JSON-LD FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How long does it take to see SEO results?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Most clients see measurable improvements within 4-8 weeks, with significant traffic increases by 3-6 months. Results depend on current site status and competitiveness of your keywords.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do you guarantee ranking improvements?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We guarantee an improvement in your Core Web Vitals, on-page SEO optimization, and technical health. We cannot guarantee rankings, as Google controls that, but our strategies typically result in 40-60% traffic increases.",
+                },
+              },
+            ],
+          }),
+        }}
       />
 
       <main className="overflow-hidden">
+        {/* HERO SECTION */}
         <section className="relative min-h-screen flex items-center justify-center bg-slate-950 overflow-hidden pt-24">
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
@@ -189,7 +176,7 @@ export default function HomePageClient() {
                 <div className="flex items-center justify-center gap-x-2 text-sm">
                   <span role="img" aria-label="check mark">✓</span>
                   <span>
-                    WhatsApp us directly: <a href={`https://wa.me/${contactPhone.replace(/[^\d]/g, '')}`} className="text-slate-200 underline hover:text-white transition-colors">+234 810 254 4186</a>
+                    WhatsApp us directly: <a href={`https://wa.me/2348102544186`} className="text-slate-200 underline hover:text-white transition-colors">+234 810 254 4186</a>
                   </span>
                 </div>
               </motion.div>
@@ -214,6 +201,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* SERVICES SECTION */}
         <section className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {/* Services Column - we keep the services section but update the title and description if needed */}
@@ -251,18 +239,6 @@ export default function HomePageClient() {
                 description="Optimize your site's technical foundation for better rankings and user experience."
                 href="/services/technical-seo"
               />
-              <ServiceCard
-                icon={<Globe className="w-8 h-8" />}
-                title="Local SEO"
-                description="Get discovered by customers in your area with local search optimization."
-                href="/services/local-seo"
-              />
-              <ServiceCard
-                icon={<TrendingUp className="w-8 h-8 h-8
-I'll continue from where I left off. Let me rewrite the rest of the component from memory since it got cut off.
-<tool_call>
-<function=Write>
-<parameter=content>
               <ServiceCard
                 icon={<Globe className="w-8 h-8" />}
                 title="Local SEO"
@@ -313,6 +289,7 @@ I'll continue from where I left off. Let me rewrite the rest of the component fr
           </div>
         </section>
 
+        {/* REAL RESULTS SECTION */}
         <section className="py-20 sm:py-24 bg-white" id="services">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -356,6 +333,7 @@ I'll continue from where I left off. Let me rewrite the rest of the component fr
           </div>
         </section>
 
+        {/* TESTIMONIALS SECTION */}
         <section className="py-20 sm:py-24 bg-slate-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -383,6 +361,7 @@ I'll continue from where I left off. Let me rewrite the rest of the component fr
           </div>
         </section>
 
+        {/* PRICING SECTION */}
         <section className="py-20 sm:py-24 bg-white" id="pricing">
           <div className="container mx-auto px-4 sm:px-6 lg:6px-8">
             <motion.div
@@ -529,6 +508,7 @@ I'll continue from where I left off. Let me rewrite the rest of the component fr
           </div>
         </section>
 
+        {/* FAQ SECTION */}
         <section className="py-20 sm:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div

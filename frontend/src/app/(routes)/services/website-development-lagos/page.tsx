@@ -77,7 +77,7 @@ export default function WebsiteDevelopmentLagosPage() {
             </div>
           </div>
         </section>
-      </main>
-    );
-  }
+      </div>
+    </main>
+  );
 }
