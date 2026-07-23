@@ -7,7 +7,7 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     question: 'How long does it take to see SEO results?',
-    answer: 'SEO is a long-term strategy. We focus on making technical improvements that help search engines understand and rank your site better. The timeline for seeing results varies based on your website's current state, industry, and competition, but we prioritize actions that can improve crawlability and indexation quickly.',
+    answer: 'SEO is a long-term strategy. We focus on making technical improvements that help search engines understand and rank your site better. The timeline for seeing results varies based on your website\'s current state, industry, and competition, but we prioritize actions that can improve crawlability and indexation quickly.',
   },
   {
     question: 'Do you guarantee ranking improvements?',
@@ -64,39 +64,39 @@ export default function FAQ() {
       />
 
       <div className="space-y-4">
-      {faqs.map((faq, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.05 }}
-          className="bg-slate-50 rounded-lg border border-slate-200 overflow-hidden"
-        >
-          <button
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-slate-100 transition-colors"
-          >
-            <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
-            <motion.div
-              animate={{ rotate: openIndex === index ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <ChevronDown className="w-5 h-5 text-slate-500 flex-shrink-0" />
-            </motion.div>
-          </button>
+        {faqs.map((faq, index) => (
           <motion.div
-            initial={false}
-            animate={{ maxHeight: openIndex === index ? 500 : 0, opacity: openIndex === index ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
+            className="bg-slate-50 rounded-lg border border-slate-200 overflow-hidden"
           >
-            <div className="px-6 pb-5 pt-0">
-              <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-            </div>
+            <button
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-slate-100 transition-colors"
+            >
+              <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
+              <motion.div
+                animate={{ rotate: openIndex === index ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ChevronDown className="w-5 h-5 text-slate-500 flex-shrink-0" />
+              </motion.div>
+            </button>
+            <motion.div
+              initial={false}
+              animate={{ maxHeight: openIndex === index ? 500 : 0, opacity: openIndex === index ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 pb-5 pt-0">
+                <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      ))}
+        ))}
       </div>
     </>
   );

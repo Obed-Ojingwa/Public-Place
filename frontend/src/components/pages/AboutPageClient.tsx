@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { CheckCircle, Users, Award, Zap, Linkedin, Github } from 'lucide-react';
+import { CheckCircle, Users, Award, Zap, Linkedin, Github, ArrowRight } from 'lucide-react';
 
 export default function AboutPage() {
   const containerVariants = {

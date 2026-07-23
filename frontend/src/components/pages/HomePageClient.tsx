@@ -6,7 +6,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { CheckCircle, Users, Award, Zap, Linkedin, Github } from 'lucide-react';
+import { CheckCircle, Users, Award, Zap, Linkedin, Github, ArrowRight, CheckCircle2, Globe, TrendingUp, Rocket } from 'lucide-react';
+import ServiceCard from '@/components/sections/ServiceCard';
+import TestimonialCarousel from '@/components/sections/TestimonialCarousel';
+import FeaturedCaseStudy from '@/components/sections/FeaturedCaseStudy';
+import CTA from '@/components/sections/CTA';
+import FAQ from '@/components/sections/FAQ';
 
 export default function HomePageClient() {
   const containerVariants = {

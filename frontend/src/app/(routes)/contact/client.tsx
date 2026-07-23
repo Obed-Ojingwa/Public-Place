@@ -171,7 +171,7 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              <motion.div varieties={itemVariants} className="bg-slate-50 rounded-lg p-6 border border-slate-200">
+              <motion.div variants={itemVariants} className="bg-slate-50 rounded-lg p-6 border border-slate-200">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0">
                     <Phone className="w-6 h-6" />

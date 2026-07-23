@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: 'NerdPace | Technical SEO & Website Development Agency in Lagos, Nigeria',
   },
   description: 'NerdPace is a Lagos-based technical SEO and website development agency. We help Nigerian startups and global businesses rank higher, load faster, and get discovered online. Book a free SEO audit.',
-  creators: [{ name: 'NerdPace' }],
+  authors: [{ name: 'NerdPace' }],
   robots: {
     index: true,
     follow: true,
@@ -100,7 +100,7 @@ export default function RootLayout({
           /* Since we are using the Metadata object, we can only set what it supports. */
           /* For the unsupported ones, we will need to use a custom Head component in each page or use a layout that includes a Head. */
           /* Given the constraints, we will update the pages individually to include the missing meta tags. */
-          /* For now, we'll just output a comment to remind ourselves. */}
+          /* For now, we'll just output a comment to remind ourselves. */
           {/* TODO: Add geo, icwm, and other meta tags via a custom Head component in each page or a shared layout. */}
         </ClerkProvider>
       </body>

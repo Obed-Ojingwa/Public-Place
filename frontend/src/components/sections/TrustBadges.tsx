@@ -2,12 +2,18 @@
 
 import { motion } from 'framer-motion';
 
+// Define the type for a trust badge
+interface TrustBadge {
+  name: string;
+  icon: string;
+  href: string;
+}
+
 // Trust badges configuration
 // STATUS: All badges need verification URLs to be enabled
 // To enable a badge: uncomment it and provide the real href URL to its verification/profile page
 // TODO: Before production, provide verification URLs for each badge
-
-const trustBadges = [
+const trustBadges: TrustBadge[] = [
   // TODO: Add Google Partner verification URL
   // { name: 'Google Partner', icon: '🏆', href: 'https://partners.google.com/YOUR_PARTNER_ID' },
 

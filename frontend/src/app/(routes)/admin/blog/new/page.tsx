@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Activity,
+  ArrowLeft,
   Image,
   Tag,
   ClipboardList,
@@ -26,9 +27,9 @@ export default function NewBlogPostPage() {
     featured_image_url: '',
     author: 'NerdPace Team',
     category: '',
-    tags: '',
+    tags: [] as string[],
     seo_keyword: '',
-    internal_links: '',
+    internal_links: [] as string[],
     read_time_minutes: 5,
     views_count: 0,
     published: false,
@@ -48,9 +49,10 @@ export default function NewBlogPostPage() {
   };
 
   const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const tagsArray = e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
     setFormData(prev => ({
       ...prev,
-      tags: e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+      tags: tagsArray
     }));
   };
 
@@ -68,8 +70,8 @@ export default function NewBlogPostPage() {
         },
         body: JSON.stringify({
           ...formData,
-          tags: Array.isArray(formData.tags) ? formData.tags : formData.tags.split(',').map(t => t.trim()).filter(t => t.length > 0),
-          internal_links: Array.isArray(formData.internal_links) ? formData.internal_links : formData.internal_links.split(',').map(l => l.trim()).filter(l => l.length > 0),
+          tags: formData.tags,
+          internal_links: formData.internal_links,
           published_at: formData.published_at || null,
         }),
       });
@@ -88,9 +90,9 @@ export default function NewBlogPostPage() {
         featured_image_url: '',
         author: 'NerdPace Team',
         category: '',
-        tags: '',
+        tags: [] as string[],
         seo_keyword: '',
-        internal_links: '',
+        internal_links: [] as string[],
         read_time_minutes: 5,
         views_count: 0,
         published: false,
@@ -176,7 +178,7 @@ export default function NewBlogPostPage() {
                   name="content"
                   value={formData.content}
                   onChange={handleChange}
-                  rows="10"
+                  rows={10}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
@@ -224,9 +226,9 @@ export default function NewBlogPostPage() {
                 <input
                   type="text"
                   name="tags"
-                  value={formData.tags}
+                  value={Array.isArray(formData.tags) ? formData.tags.join(', ') : formData.tags}
                   onChange={handleTagsChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg rounded-lg focus:ring-blue-500 focus:border-transparent"
                   placeholder="SEO, Marketing, Tutorial"
                 />
               </div>
@@ -249,11 +251,12 @@ export default function NewBlogPostPage() {
                 <input
                   type="text"
                   name="internal_links"
-                  value={formData.internal_links}
+                  value={Array.isArray(formData.internal_links) ? formData.internal_links.join(', ') : formData.internal_links}
                   onChange={e => {
+                    const internalLinksArray = e.target.value.split(',').map(link => link.trim()).filter(link => link.length > 0);
                     setFormData(prev => ({
                       ...prev,
-                      internal_links: e.target.value.split(',').map(l => l.trim()).filter(l => l.length > 0)
+                      internal_links: internalLinksArray
                     }));
                   }}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -337,9 +340,9 @@ export default function NewBlogPostPage() {
                     featured_image_url: '',
                     author: 'NerdPace Team',
                     category: '',
-                    tags: '',
+                    tags: [] as string[],
                     seo_keyword: '',
-                    internal_links: '',
+                    internal_links: [] as string[],
                     read_time_minutes: 5,
                     views_count: 0,
                     published: false,

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Phone, MapPinTwitter, Linkedin, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -55,7 +55,7 @@ export default function Footer() {
                 <div key={info.label} className="flex items-start space-x-3">
                   {info.icon && (
                     <div className="flex-shrink-0 h-5 w-5 flex items-center justify-center">
-                      {info.icon}
+                      <info.icon />
                     </div>
                   )}
                   <div>
@@ -91,7 +91,7 @@ export default function Footer() {
                   className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
                   aria-label={social.name}
                 >
-                  {social.icon}
+                  <social.icon />
                 </a>
               ))}
             </div>
