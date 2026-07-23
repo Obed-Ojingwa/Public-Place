@@ -51,7 +51,7 @@ export default function HomePageClient() {
               telephone: "+2348102544186",
             },
             sameAs: [
-              "https://twitter.com/nerdpace",
+             // "https://twitter.com/nerdpace",
               "https://linkedin.com/company/nerdpace",
               "https://instagram.com/nerdpace",
             ],
