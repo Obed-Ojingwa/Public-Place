@@ -42,10 +42,11 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">N</span>
+              <img src="/nerdpace_logo.png" alt="NerdPace Logo" className="h-9 w-auto" />
+              <div>
+                <p className="font-bold text-white text-base leading-none">NerdPace</p>
+                <p className="text-slate-400 text-xs">Lagos-based technical SEO & website development agency</p>
               </div>
-              <span className="font-bold text-xl">NerdPace</span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-xl">
               Lagos-based technical SEO and website development agency helping Nigerian startups and global businesses rank higher and grow organically.

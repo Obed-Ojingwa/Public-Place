@@ -37,9 +37,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-              <span className="text-white font-extrabold text-lg tracking-tight">N</span>
-            </div>
+            <img src="/nerdpace_logo.png" alt="NerdPace Logo" className="h-11 w-auto" />
             <div>
               <p className="text-white font-semibold text-base leading-none">NerdPace</p>
               <p className="text-slate-400 text-xs">Lagos-based technical SEO & website development agency</p>
