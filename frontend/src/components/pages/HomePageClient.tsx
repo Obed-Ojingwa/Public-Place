@@ -138,7 +138,7 @@ export default function HomePageClient() {
               <motion.div variants={itemVariants} className="mb-8 text-center">
                 <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-800/90 border border-slate-700 text-slate-200 text-sm font-medium tracking-wide">
                   <Zap className="w-4 h-4 text-amber-400" />
-                  Trusted by Haliberry Cake & growing businesses
+                  Trusted by Haliberry Cake
                 </span>
               </motion.div>
 
