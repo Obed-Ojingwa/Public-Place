@@ -31,7 +31,7 @@ export default function Footer() {
 
   const socialLinks = [
   //  { name: 'Twitter/X', icon: Twitter, href: 'https://twitter.com/nerdpace' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/nerdpace' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nerdpace/' },
     { name: 'GitHub', icon: Github, href: 'https://github.com/Obed-Ojingwa' },
   ];
 

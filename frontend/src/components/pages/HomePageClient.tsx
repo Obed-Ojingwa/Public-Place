@@ -52,7 +52,7 @@ export default function HomePageClient() {
             },
             sameAs: [
              // "https://twitter.com/nerdpace",
-              "https://linkedin.com/company/nerdpace",
+              "https://www.linkedin.com/company/nerdpace/",
               "https://instagram.com/nerdpace",
             ],
           }),
