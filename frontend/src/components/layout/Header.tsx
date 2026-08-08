@@ -67,12 +67,17 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+            className={`md:hidden inline-flex items-center justify-center rounded-lg border p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-400 ${
+              scrolled
+                ? 'border-slate-700 bg-white/5 text-slate-100 hover:bg-slate-100/10'
+                : 'border-white/15 bg-slate-900/20 text-white hover:bg-white/10'
             }`}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </nav>
