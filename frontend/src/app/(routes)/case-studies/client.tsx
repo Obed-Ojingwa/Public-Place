@@ -13,7 +13,7 @@ export default function CaseStudiesPageClient() {
             Case Studies
           </h1>
           <p className="text-xl text-slate-300 text-center mb-16 max-w-2xl mx-auto">
-            See how we helped businesses like yours achieve explosive growth
+            See the work we do for our dear clients
           </p>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

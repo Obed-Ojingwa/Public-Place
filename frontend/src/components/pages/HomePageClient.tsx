@@ -314,7 +314,7 @@ export default function HomePageClient() {
                 variants={itemVariants}
                 className="text-xl text-slate-600"
               >
-                See how we helped businesses like yours achieve explosive growth
+                See the work we do for our dear clients
               </motion.p>
             </motion.div>
 
