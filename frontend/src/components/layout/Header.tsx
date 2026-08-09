@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -37,7 +38,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <img src="/nerdpace_logo.png" alt="NerdPace Logo" className="h-11 w-auto" />
+            <Image
+              src="/nerdpace_logo.png"
+              alt="NerdPace Logo"
+              width={44}
+              height={44}
+              priority
+              className="h-11 w-auto"
+            />
             <div>
               <p className="text-white font-semibold text-base leading-none">NerdPace</p>
               <p className="text-slate-400 text-xs">Lagos-based technical SEO & website development agency</p>

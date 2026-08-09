@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
 
@@ -42,7 +43,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center gap-2 mb-6">
-              <img src="/nerdpace_logo.png" alt="NerdPace Logo" className="h-9 w-auto" />
+              <Image
+                src="/nerdpace_logo.png"
+                alt="NerdPace Logo"
+                width={36}
+                height={36}
+                className="h-9 w-auto"
+              />
               <div>
                 <p className="font-bold text-white text-base leading-none">NerdPace</p>
                 <p className="text-slate-400 text-xs">Lagos-based technical SEO & website development agency</p>
