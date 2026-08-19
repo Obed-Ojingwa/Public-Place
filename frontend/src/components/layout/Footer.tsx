@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -26,92 +26,76 @@ export default function Footer() {
       icon: MapPin,
       label: 'Location',
       value: 'Lagos, Nigeria',
-      href: '#',
+      href: 'https://maps.google.com/?q=Lagos,Nigeria',
     },
   ];
 
   const socialLinks = [
-  //  { name: 'Twitter/X', icon: Twitter, href: 'https://twitter.com/nerdpace' },
     { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nerdpace/' },
     { name: 'GitHub', icon: Github, href: 'https://github.com/Obed-Ojingwa' },
   ];
 
+  const serviceLinks = [
+    { name: 'SEO Audit', href: '/services/seo-audits' },
+    { name: 'Monthly SEO', href: '/pricing' },
+    { name: 'Technical SEO', href: '/services/technical-seo' },
+    { name: 'Local SEO', href: '/services/local-seo' },
+    { name: 'Content SEO', href: '/services/content-seo' },
+  ];
+
+  const companyLinks = [
+    { name: 'About NerdPace', href: '/about' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Insights & Blog', href: '/blog' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-8">
-          {/* Brand Column */}
-          <div className="mb-8 lg:mb-0">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <Image
-                src="/nerdpace_logo.png"
-                alt="NerdPace Logo"
-                width={36}
-                height={36}
-                className="h-9 w-auto"
-              />
-              <div>
-                <p className="font-bold text-white text-base leading-none">NerdPace</p>
-                <p className="text-slate-400 text-xs">Lagos-based technical SEO & website development agency</p>
-              </div>
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#07111f] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_8%,rgba(34,211,238,0.12),transparent_30%),radial-gradient(circle_at_90%_80%,rgba(245,158,11,0.08),transparent_28%)]" />
+      <div className="relative container mx-auto px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mb-16 grid gap-8 border-b border-white/10 pb-14 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="max-w-3xl">
+            <p className="mb-4 font-mono text-xs uppercase tracking-[0.24em] text-cyan-300">NerdPace / Next move</p>
+            <h2 className="max-w-2xl text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">Your next organic growth opportunity is probably closer than it looks.</h2>
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-400">Bring us the context. We will help you find the clearest path from technical friction to meaningful search visibility.</p>
+          </div>
+          <Link href="/audit" className="group inline-flex w-fit items-center gap-3 border border-cyan-300/60 bg-cyan-300 px-5 py-3.5 font-semibold text-slate-950 transition hover:bg-cyan-200">
+            Start with a free audit
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr_0.7fr_1fr] lg:gap-8">
+          <div>
+            <Link href="/" className="mb-6 inline-flex items-center gap-3">
+              <Image src="/nerdpace_logo.png" alt="NerdPace Logo" width={42} height={42} className="h-10 w-auto" />
+              <span className="text-xl font-semibold tracking-tight">NerdPace</span>
             </Link>
-            <p className="text-slate-400 mb-6 max-w-xl">
-              Lagos-based technical SEO and website development agency helping Nigerian startups and global businesses rank higher and grow organically.
-            </p>
-            <div className="space-y-3 text-slate-400">
-              {contactInfo.map((info) => (
-                <div key={info.label} className="flex items-start space-x-3">
-                  {info.icon && (
-                    <div className="flex-shrink-0 h-5 w-5 flex items-center justify-center">
-                      <info.icon />
-                    </div>
-                  )}
-                  <div>
-                    {info.label && (
-                      <span className="font-medium text-slate-300">{info.label}:</span>
-                    )}
-                    {info.href ? (
-                      <a
-                        href={info.href}
-                        className="text-slate-200 hover:text-white transition-colors"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <span className="text-slate-200">{info.value}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
+            <p className="max-w-sm text-sm leading-7 text-slate-400">Technical SEO and website development for Nigerian startups and global businesses that want to be found, trusted and remembered.</p>
+            <div className="mt-7 flex items-center gap-3">
+              {socialLinks.map((social) => <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} className="grid h-10 w-10 place-items-center border border-white/10 text-slate-400 transition hover:border-cyan-300/60 hover:bg-cyan-300/10 hover:text-cyan-300"><social.icon className="h-4 w-4" /></a>)}
             </div>
           </div>
 
-          {/* Social Column */}
-          <div className="flex items-start">
-            <h3 className="font-bold text-lg mb-4 text-white">Connect</h3>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
-                  aria-label={social.name}
-                >
-                  <social.icon />
-                </a>
-              ))}
-            </div>
+          <div>
+            <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Services</h3>
+            <nav className="space-y-3" aria-label="Footer services">{serviceLinks.map((link) => <Link key={link.name} href={link.href} className="group flex w-fit items-center gap-2 text-sm text-slate-300 transition hover:text-white"><span>{link.name}</span><ArrowUpRight className="h-3.5 w-3.5 text-slate-600 transition group-hover:text-cyan-300" /></Link>)}</nav>
+          </div>
+
+          <div>
+            <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Explore</h3>
+            <nav className="space-y-3" aria-label="Footer company links">{companyLinks.map((link) => <Link key={link.name} href={link.href} className="group flex w-fit items-center gap-2 text-sm text-slate-300 transition hover:text-white"><span>{link.name}</span><ArrowUpRight className="h-3.5 w-3.5 text-slate-600 transition group-hover:text-cyan-300" /></Link>)}</nav>
+          </div>
+
+          <div>
+            <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-slate-500">Talk to us</h3>
+            <div className="space-y-3">{contactInfo.map((info) => { const Icon = info.icon; return <a key={info.label} href={info.href} className="group flex items-start gap-3 text-sm text-slate-300 transition hover:text-white"><span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center border border-white/10 text-cyan-300"><Icon className="h-3.5 w-3.5" /></span><span><span className="block text-xs text-slate-500">{info.label}</span><span className="mt-0.5 block leading-6">{info.value}</span></span></a>; })}</div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-800">
-          <p className="text-slate-400 text-sm text-center">
-            © {currentYear} NerdPace. All rights reserved.
-          </p>
-        </div>
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>© {currentYear} NerdPace. All rights reserved.</p><span>Lagos, Nigeria</span></div>
       </div>
     </footer>
   );
