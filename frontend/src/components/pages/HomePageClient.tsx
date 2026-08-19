@@ -401,31 +401,31 @@ export default function HomePageClient() {
                 variants={itemVariants}
                 className="relative bg-white rounded-lg border border-slate-200 p-8 shadow-sm hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Starter Audit</h3>
-                <p className="text-slate-600 mb-6">Perfect for trying out our service</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Foundation</h3>
+                <p className="text-slate-600 mb-6">For businesses establishing organic visibility</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-slate-900">$497</span>
-                  <span className="text-slate-600 ml-2">one-time</span>
+                  <span className="text-4xl font-bold text-slate-900">₦150,000</span>
+                  <span className="text-slate-600 ml-2">/month</span>
                 </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">Comprehensive technical audit</span>
+                    <span className="text-slate-700">SEO onboarding and keyword research</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">Detailed PDF report</span>
+                    <span className="text-slate-700">Up to 5 priority pages optimized/month</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">30-min strategy call</span>
+                    <span className="text-slate-700">Technical fixes, reporting and monitoring</span>
                   </li>
                 </ul>
                 <Link
-                  href="/audit"
+                  href="/services"
                   className="block w-full text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
                 >
-                  Get Started
+                  Explore Foundation
                 </Link>
               </motion.div>
 
@@ -438,39 +438,39 @@ export default function HomePageClient() {
                     Most Popular
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Growth SEO</h3>
-                <p className="text-blue-100 mb-6">Our most recommended plan</p>
+                <h3 className="text-2xl font-bold text-white mb-2">Growth</h3>
+                <p className="text-blue-100 mb-6">For consistent qualified organic traffic and leads</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-white">$1,500</span>
+                  <span className="text-4xl font-bold text-white">₦300,000</span>
                   <span className="text-blue-100 ml-2">/month</span>
                 </div>
                 <ul className="space-y-3 mb-8 text-white">
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-300 mr-3 flex-shrink-0" />
-                    <span>Everything in Starter</span>
+                    <span>Everything in Foundation</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-300 mr-3 flex-shrink-0" />
-                    <span>Monthly optimization</span>
+                    <span>Up to 10 priority pages and 2 content assets/month</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-300 mr-3 flex-shrink-0" />
-                    <span>Rank tracking & reports</span>
+                    <span>Advanced technical SEO and schema</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-300 mr-3 flex-shrink-0" />
-                    <span>Content optimization</span>
+                    <span>Competitor analysis and link-building</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-300 mr-3 flex-shrink-0" />
-                    <span>6-month commitment</span>
+                    <span>Monthly strategy meeting</span>
                   </li>
                 </ul>
                 <Link
                   href="/contact"
                   className="block w-full text-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
                 >
-                  Schedule Call
+                  Explore Growth
                 </Link>
               </motion.div>
 
@@ -478,10 +478,10 @@ export default function HomePageClient() {
                 variants={itemVariants}
                 className="relative bg-white rounded-lg border border-slate-200 p-8 shadow-sm hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Premium Retainer</h3>
-                <p className="text-slate-600 mb-6">For enterprise & serious growth</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Authority</h3>
+                <p className="text-slate-600 mb-6">For businesses competing aggressively in search</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-slate-900">$3,500</span>
+                  <span className="text-4xl font-bold text-slate-900">₦550,000</span>
                   <span className="text-slate-600 ml-2">/month</span>
                 </div>
                 <ul className="space-y-3 mb-8">
@@ -491,22 +491,22 @@ export default function HomePageClient() {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">Dedicated account manager</span>
+                    <span className="text-slate-700">15–20 priority pages and 4 content assets/month</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">Priority 24/7 support</span>
+                    <span className="text-slate-700">Digital PR, SERP intelligence and entity optimisation</span>
                   </li>
                   <li className="flex items-center">
                     <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-slate-700">Quarterly strategy reviews</span>
+                    <span className="text-slate-700">Dedicated strategist and priority support</span>
                   </li>
                 </ul>
                 <Link
                   href="/contact"
                   className="block w-full text-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition-all duration-300"
                 >
-                  Get in Touch
+                  Explore Authority
                 </Link>
               </motion.div>
             </motion.div>

@@ -18,8 +18,6 @@ RENDER_DEPLOYMENT_READY.md
 Price_and_page_structure.md
 
 # Environment
-.env
-.env.local
 .env.*.local
 
 # Build outputs
@@ -29,7 +27,6 @@ build/
 *.egg-info/
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -49,3 +46,4 @@ logs/
 # Database
 *.db
 *.sqlite
+config.bat
