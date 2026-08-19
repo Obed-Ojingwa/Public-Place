@@ -4,7 +4,7 @@
 // Replace your current page.tsx entirely with this file.
 
 import { Metadata } from 'next';
-import ServicesPageClient from '@/components/pages/ServicesPageClient';
+import ServicesPageClient from '@/components/pages/ServicesCatalogueClient';
 
 
 export const metadata: Metadata = {
